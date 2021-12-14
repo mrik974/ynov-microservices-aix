@@ -37,7 +37,7 @@ import java.util.Collection;
  */
 
 @RestController
-@CrossOrigin(exposedHeaders = "errors, content-type")
+@CrossOrigin(exposedHeaders = "errors, content-type", origins = "*")
 @RequestMapping("/api/owners")
 public class OwnerRestController {
 
