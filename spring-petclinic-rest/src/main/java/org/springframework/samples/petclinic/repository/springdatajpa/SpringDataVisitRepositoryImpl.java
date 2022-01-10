@@ -28,6 +28,7 @@ import org.springframework.samples.petclinic.model.Visit;
  *
  */
 
+@Profile("spring-data-jpa")
 public class SpringDataVisitRepositoryImpl implements VisitRepositoryOverride {
 	
 	@PersistenceContext

@@ -31,6 +31,7 @@ import org.springframework.samples.petclinic.repository.OwnerRepository;
  * @since 15.1.2013
  */
 
+@Profile("spring-data-jpa")
 public interface SpringDataOwnerRepository extends OwnerRepository, Repository<Owner, Integer> {
 
     @Override
@@ -40,4 +41,6 @@ public interface SpringDataOwnerRepository extends OwnerRepository, Repository<O
     @Override
     @Query("SELECT owner FROM Owner owner left join fetch owner.pets WHERE owner.id =:id")
     Owner findById(@Param("id") int id);
+    
+    Collection<Owner> findByPets_Name(String petName);
 }

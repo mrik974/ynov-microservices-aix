@@ -77,5 +77,7 @@ public interface OwnerRepository {
      */
 	void delete(Owner owner) throws DataAccessException;
 
+	Collection<Owner> findByPets_Name(String petName);
+
 
 }

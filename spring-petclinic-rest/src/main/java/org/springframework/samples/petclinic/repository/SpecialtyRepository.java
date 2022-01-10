@@ -34,6 +34,6 @@ public interface SpecialtyRepository {
 	
 	void save(Specialty specialty) throws DataAccessException;
 	
-	void delete(Specialty specialty) throws DataAccessException;
+	void delete(Integer specialtyId) throws DataAccessException;
 
 }
