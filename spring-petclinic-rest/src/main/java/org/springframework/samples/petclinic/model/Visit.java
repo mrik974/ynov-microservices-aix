@@ -17,15 +17,8 @@ package org.springframework.samples.petclinic.model;
 
 import java.util.Date;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
-
 import javax.validation.constraints.NotEmpty;
+
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.samples.petclinic.rest.JacksonCustomVisitDeserializer;
 import org.springframework.samples.petclinic.rest.JacksonCustomVisitSerializer;
@@ -39,8 +32,6 @@ import com.fasterxml.jackson.databind.annotation.JsonSerialize;
  *
  * @author Ken Krebs
  */
-@Entity
-@Table(name = "visits")
 @JsonSerialize(using = JacksonCustomVisitSerializer.class)
 @JsonDeserialize(using = JacksonCustomVisitDeserializer.class)
 public class Visit extends BaseEntity {
@@ -48,8 +39,6 @@ public class Visit extends BaseEntity {
     /**
      * Holds value of property date.
      */
-    @Column(name = "visit_date")
-    @Temporal(TemporalType.TIMESTAMP)
     @DateTimeFormat(pattern = "yyyy/MM/dd")
     @JsonFormat(shape=JsonFormat.Shape.STRING, pattern="yyyy/MM/dd")
     private Date date;
@@ -58,14 +47,11 @@ public class Visit extends BaseEntity {
      * Holds value of property description.
      */
     @NotEmpty
-    @Column(name = "description")
     private String description;
 
     /**
      * Holds value of property pet.
      */
-    @ManyToOne
-    @JoinColumn(name = "pet_id")
     private Pet pet;
 
 

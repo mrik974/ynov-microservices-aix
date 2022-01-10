@@ -3,7 +3,6 @@ package org.springframework.samples.petclinic.repository.api;
 import java.util.Collection;
 
 import org.springframework.cloud.openfeign.FeignClient;
-import org.springframework.dao.DataAccessException;
 import org.springframework.samples.petclinic.model.Vet;
 import org.springframework.samples.petclinic.repository.VetRepository;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -15,15 +14,15 @@ import org.springframework.web.bind.annotation.RequestMethod;
 public interface ApiVetRepository extends VetRepository {
 
 	@RequestMapping(value = "", method = RequestMethod.GET, produces = "application/json")
-	Collection<Vet> findAll() throws DataAccessException;
+	Collection<Vet> findAll();
 
 	@RequestMapping(value = "/{vetId}", method = RequestMethod.GET, produces = "application/json")
-	Vet findById(@PathVariable("vetId") int id) throws DataAccessException;
+	Vet findById(@PathVariable("vetId") int id);
 
 	@RequestMapping(value = "", method = RequestMethod.POST, produces = "application/json")
-	void save(@RequestBody Vet vet) throws DataAccessException;
+	void save(@RequestBody Vet vet);
 
 	@RequestMapping(value = "/{vetId}", method = RequestMethod.DELETE, produces = "application/json")
-	void delete(@PathVariable("vetId") int vetId) throws DataAccessException;
+	void delete(@PathVariable("vetId") int vetId);
 
 }

@@ -19,13 +19,11 @@ package org.springframework.samples.petclinic.rest;
 import java.util.ArrayList;
 import java.util.Collection;
 
-import javax.transaction.Transactional;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.samples.petclinic.model.Visit;
 import org.springframework.samples.petclinic.service.ClinicService;
@@ -112,7 +110,6 @@ public class VisitRestController {
 
     @PreAuthorize( "hasRole(@roles.OWNER_ADMIN)" )
 	@RequestMapping(value = "/{visitId}", method = RequestMethod.DELETE, produces = "application/json")
-	@Transactional
 	public ResponseEntity<Void> deleteVisit(@PathVariable("visitId") int visitId){
 		Visit visit = this.clinicService.findVisitById(visitId);
 		if(visit == null){
