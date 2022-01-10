@@ -1,47 +1,32 @@
 package org.springframework.samples.petclinic.repository.api;
 
-import java.util.Arrays;
 import java.util.Collection;
 
+import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.dao.DataAccessException;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.samples.petclinic.model.PetType;
 import org.springframework.samples.petclinic.repository.PetTypeRepository;
-import org.springframework.stereotype.Service;
-import org.springframework.web.client.RestTemplate;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
-@Service
-public class ApiPetTypeRepositoryImpl implements PetTypeRepository {
-
-	@Override
-	public PetType findById(int id) throws DataAccessException {
-		RestTemplate restClient = new RestTemplate();
-		return restClient.getForEntity("http://localhost:8081/api/pettypes/" + String.valueOf(id), PetType.class)
-				.getBody();
-	}
+@FeignClient(url = "http://localhost:8081/api/pettypes/", name = "pettypes-api")
+public interface ApiPetTypeRepositoryImpl extends PetTypeRepository {
 
 	@Override
-	public Collection<PetType> findAll() throws DataAccessException {
-		RestTemplate restClient = new RestTemplate();
-		PetType[] petTypes = restClient.getForEntity("http://localhost:8081/api/pettypes/", PetType[].class).getBody();
-		return Arrays.asList(petTypes);
-	}
+	@RequestMapping(value = "/{petTypeId}", method = RequestMethod.GET, produces = "application/json")
+	public PetType findById(@PathVariable("petTypeId") int id) throws DataAccessException;
 
 	@Override
-	public void save(PetType petType) throws DataAccessException {
-		RestTemplate restClient = new RestTemplate();
-		ResponseEntity<?> response = restClient.postForEntity("http://localhost:8081/api/pettypes/", petType,
-				petType.getClass());
-		if (!response.getStatusCode().equals(HttpStatus.CREATED)) {
-			throw new RuntimeException("Could not create petType");
-		}
-	}
+	@RequestMapping(value = "", method = RequestMethod.GET, produces = "application/json")
+	public Collection<PetType> findAll() throws DataAccessException;
 
 	@Override
-	public void delete(PetType petType) throws DataAccessException {
-		RestTemplate restClient = new RestTemplate();
-		restClient.delete("http://localhost:8081/api/pettypes/" + String.valueOf(petType.getId()));
-	}
+	@RequestMapping(value = "", method = RequestMethod.POST, produces = "application/json")
+	public void save(@RequestBody PetType petType) throws DataAccessException;
 
+	@Override
+	@RequestMapping(value = "/{petTypeId}", method = RequestMethod.DELETE, produces = "application/json")
+	public void delete(@PathVariable("petTypeId") int petTypeId) throws DataAccessException;
 }

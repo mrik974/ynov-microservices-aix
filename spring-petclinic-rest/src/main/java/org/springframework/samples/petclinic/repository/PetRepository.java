@@ -73,6 +73,6 @@ public interface PetRepository {
      * @param pet the <code>Pet</code> to delete
      * 
      */
-	void delete(Pet pet) throws DataAccessException;
+	void delete(int petId) throws DataAccessException;
 
 }

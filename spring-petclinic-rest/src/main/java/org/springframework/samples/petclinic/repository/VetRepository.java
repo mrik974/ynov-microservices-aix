@@ -43,7 +43,7 @@ public interface VetRepository {
 
 	void save(Vet vet) throws DataAccessException;
 	
-	void delete(Vet vet) throws DataAccessException;
+	void delete(int vetId) throws DataAccessException;
 
 
 }

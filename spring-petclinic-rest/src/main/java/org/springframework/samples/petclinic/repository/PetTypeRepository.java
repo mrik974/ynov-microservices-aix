@@ -34,6 +34,6 @@ public interface PetTypeRepository {
 
 	void save(PetType petType) throws DataAccessException;
 	
-	void delete(PetType petType) throws DataAccessException;
+	void delete(int id) throws DataAccessException;
 
 }

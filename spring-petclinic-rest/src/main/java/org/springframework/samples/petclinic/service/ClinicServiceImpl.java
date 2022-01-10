@@ -15,7 +15,6 @@
  */
 package org.springframework.samples.petclinic.service;
 
-import java.util.ArrayList;
 import java.util.Collection;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -81,7 +80,7 @@ public class ClinicServiceImpl implements ClinicService {
 	@Override
 	@Transactional
 	public void deletePet(Pet pet) throws DataAccessException {
-		petRepository.delete(pet);
+		petRepository.delete(pet.getId());
 	}
 
 	@Override
@@ -106,7 +105,7 @@ public class ClinicServiceImpl implements ClinicService {
 	@Override
 	@Transactional
 	public void deleteVisit(Visit visit) throws DataAccessException {
-		visitRepository.delete(visit);
+		visitRepository.delete(visit.getId());
 	}
 
 	@Override
@@ -137,7 +136,7 @@ public class ClinicServiceImpl implements ClinicService {
 	@Override
 	@Transactional
 	public void deleteVet(Vet vet) throws DataAccessException {
-		vetRepository.delete(vet);
+		vetRepository.delete(vet.getId());
 	}
 
 	@Override
@@ -149,7 +148,7 @@ public class ClinicServiceImpl implements ClinicService {
 	@Override
 	@Transactional
 	public void deleteOwner(Owner owner) throws DataAccessException {
-		ownerRepository.delete(owner);
+		ownerRepository.delete(owner.getId());
 	}
 
 	@Override
@@ -180,7 +179,7 @@ public class ClinicServiceImpl implements ClinicService {
 	@Override
 	@Transactional
 	public void deletePetType(PetType petType) throws DataAccessException {
-		petTypeRepository.delete(petType);
+		petTypeRepository.delete(petType.getId());
 	}
 
 	@Override

@@ -75,7 +75,7 @@ public interface OwnerRepository {
      * @param owner the <code>Owner</code> to delete
      * 
      */
-	void delete(Owner owner) throws DataAccessException;
+	void delete(int ownerId) throws DataAccessException;
 
 	Collection<Owner> findByPets_Name(String petName);
 
