@@ -6,7 +6,7 @@
 
 	<groupId>org.springframework.samples</groupId>
 	<artifactId>spring-petclinic-rest</artifactId>
-	<version>2.4.2</version>
+	<version>2.4.3</version>
 
 	<description>REST version of the Spring Petclinic sample application</description>
 	<url>https://spring-petclinic.github.io/</url>
@@ -37,6 +37,10 @@
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-actuator</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>io.micrometer</groupId>
+			<artifactId>micrometer-registry-prometheus</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -119,7 +123,7 @@
 			<version>2.3.0</version>
 		</dependency>
 	</dependencies>
-	
+
 
 	<build>
 		<plugins>
