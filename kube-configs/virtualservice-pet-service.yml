@@ -1,0 +1,17 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: petclinic-pets-service-route
+  namespace: default
+spec:
+  hosts:
+    - petclinic-pets
+  http:
+    - fault:
+        delay:
+          fixedDelay: 3s
+          percentage:
+            value: 33
+      route:
+        - destination:
+            host: petclinic-pets

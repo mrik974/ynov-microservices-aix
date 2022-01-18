@@ -1,0 +1,18 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: DestinationRule
+metadata:
+  name: petclinic-gateway-destination
+  namespace: default
+spec:
+  host: petclinic-gateway
+  trafficPolicy:
+    connectionPool:
+      http:
+        http1MaxPendingRequests: 1
+        maxRequestsPerConnection: 1
+        maxRetries: 0
+    outlierDetection:
+      baseEjectionTime: 1m
+      consecutive5xxErrors: 3
+      interval: 30s
+      maxEjectionPercent: 100

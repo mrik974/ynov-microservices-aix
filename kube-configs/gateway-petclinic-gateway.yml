@@ -1,0 +1,15 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: Gateway
+metadata:
+  name: petclinic-gateway
+  namespace: default
+spec:
+  selector:
+    istio: ingressgateway
+  servers:
+    - hosts:
+        - petclinic.127.0.0.1.nip.io
+      port:
+        name: http
+        number: 80
+        protocol: HTTP
