@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-@FeignClient(url = "http://localhost:8081/api/owners/", name = "owners-api")
+@FeignClient(url = "${feign.petServiceURL}/api/owners/", name = "owners-api")
 public interface ApiOwnerRepository extends OwnerRepository {
 
 	@RequestMapping(value = "/*/lastname/{lastName}", method = RequestMethod.GET, produces = "application/json")

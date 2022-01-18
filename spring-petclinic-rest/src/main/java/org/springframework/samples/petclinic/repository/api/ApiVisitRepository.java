@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-@FeignClient(url = "http://localhost:8082/api/visits/", name = "visits-api")
+@FeignClient(url = "${feign.visitServiceURL}/api/visits/", name = "visits-api")
 public interface ApiVisitRepository extends VisitRepository {
 
 	@RequestMapping(value = "", method = RequestMethod.POST, produces = "application/json")

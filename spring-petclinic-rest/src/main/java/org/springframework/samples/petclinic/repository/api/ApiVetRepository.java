@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-@FeignClient(url = "http://localhost:8080/api/vets/", name = "vets-api")
+@FeignClient(url = "${feign.vetServiceURL}/api/vets/", name = "vets-api")
 public interface ApiVetRepository extends VetRepository {
 
 	@RequestMapping(value = "", method = RequestMethod.GET, produces = "application/json")
