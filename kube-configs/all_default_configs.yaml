@@ -1,0 +1,1633 @@
+apiVersion: v1
+items:
+- apiVersion: apps/v1
+  kind: Deployment
+  metadata:
+    annotations:
+      deployment.kubernetes.io/revision: "2"
+    creationTimestamp: "2022-01-11T15:56:11Z"
+    generation: 2
+    labels:
+      app: mariadb
+    managedFields:
+    - apiVersion: apps/v1
+      fieldsType: FieldsV1
+      fieldsV1:
+        f:metadata:
+          f:labels:
+            .: {}
+            f:app: {}
+        f:spec:
+          f:progressDeadlineSeconds: {}
+          f:replicas: {}
+          f:revisionHistoryLimit: {}
+          f:selector: {}
+          f:strategy:
+            f:rollingUpdate:
+              .: {}
+              f:maxSurge: {}
+              f:maxUnavailable: {}
+            f:type: {}
+          f:template:
+            f:metadata:
+              f:labels:
+                .: {}
+                f:app: {}
+            f:spec:
+              f:containers:
+                k:{"name":"mariadb"}:
+                  .: {}
+                  f:env:
+                    .: {}
+                    k:{"name":"MYSQL_ROOT_PASSWORD"}:
+                      .: {}
+                      f:name: {}
+                      f:valueFrom:
+                        .: {}
+                        f:secretKeyRef: {}
+                  f:image: {}
+                  f:imagePullPolicy: {}
+                  f:name: {}
+                  f:ports:
+                    .: {}
+                    k:{"containerPort":3306,"protocol":"TCP"}:
+                      .: {}
+                      f:containerPort: {}
+                      f:protocol: {}
+                  f:resources: {}
+                  f:terminationMessagePath: {}
+                  f:terminationMessagePolicy: {}
+                  f:volumeMounts:
+                    .: {}
+                    k:{"mountPath":"/var/lib/mysql"}:
+                      .: {}
+                      f:mountPath: {}
+                      f:name: {}
+              f:dnsPolicy: {}
+              f:restartPolicy: {}
+              f:schedulerName: {}
+              f:securityContext: {}
+              f:terminationGracePeriodSeconds: {}
+              f:volumes:
+                .: {}
+                k:{"name":"data"}:
+                  .: {}
+                  f:name: {}
+                  f:persistentVolumeClaim:
+                    .: {}
+                    f:claimName: {}
+      manager: dashboard
+      operation: Update
+      time: "2022-01-11T16:13:23Z"
+    - apiVersion: apps/v1
+      fieldsType: FieldsV1
+      fieldsV1:
+        f:metadata:
+          f:annotations:
+            .: {}
+            f:deployment.kubernetes.io/revision: {}
+        f:status:
+          f:availableReplicas: {}
+          f:conditions:
+            .: {}
+            k:{"type":"Available"}:
+              .: {}
+              f:lastTransitionTime: {}
+              f:lastUpdateTime: {}
+              f:message: {}
+              f:reason: {}
+              f:status: {}
+              f:type: {}
+            k:{"type":"Progressing"}:
+              .: {}
+              f:lastTransitionTime: {}
+              f:lastUpdateTime: {}
+              f:message: {}
+              f:reason: {}
+              f:status: {}
+              f:type: {}
+          f:observedGeneration: {}
+          f:readyReplicas: {}
+          f:replicas: {}
+          f:updatedReplicas: {}
+      manager: kube-controller-manager
+      operation: Update
+      subresource: status
+      time: "2022-01-20T13:08:06Z"
+    name: mariadb
+    namespace: default
+    resourceVersion: "295165"
+    uid: d981fd51-3ea6-4ea6-850b-1efe34d4c0f7
+  spec:
+    progressDeadlineSeconds: 600
+    replicas: 1
+    revisionHistoryLimit: 10
+    selector:
+      matchLabels:
+        app: mariadb
+    strategy:
+      rollingUpdate:
+        maxSurge: 25%
+        maxUnavailable: 25%
+      type: RollingUpdate
+    template:
+      metadata:
+        creationTimestamp: null
+        labels:
+          app: mariadb
+      spec:
+        containers:
+        - env:
+          - name: MYSQL_ROOT_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                key: root-password
+                name: mariadb-root-password
+          image: mariadb
+          imagePullPolicy: Always
+          name: mariadb
+          ports:
+          - containerPort: 3306
+            protocol: TCP
+          resources: {}
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+          volumeMounts:
+          - mountPath: /var/lib/mysql
+            name: data
+        dnsPolicy: ClusterFirst
+        restartPolicy: Always
+        schedulerName: default-scheduler
+        securityContext: {}
+        terminationGracePeriodSeconds: 30
+        volumes:
+        - name: data
+          persistentVolumeClaim:
+            claimName: mariadb
+  status:
+    availableReplicas: 1
+    conditions:
+    - lastTransitionTime: "2022-01-11T15:56:11Z"
+      lastUpdateTime: "2022-01-11T16:13:26Z"
+      message: ReplicaSet "mariadb-869c96ffcd" has successfully progressed.
+      reason: NewReplicaSetAvailable
+      status: "True"
+      type: Progressing
+    - lastTransitionTime: "2022-01-20T13:08:06Z"
+      lastUpdateTime: "2022-01-20T13:08:06Z"
+      message: Deployment has minimum availability.
+      reason: MinimumReplicasAvailable
+      status: "True"
+      type: Available
+    observedGeneration: 2
+    readyReplicas: 1
+    replicas: 1
+    updatedReplicas: 1
+- apiVersion: apps/v1
+  kind: Deployment
+  metadata:
+    annotations:
+      deployment.kubernetes.io/revision: "4"
+    creationTimestamp: "2022-01-11T16:39:05Z"
+    generation: 5
+    labels:
+      app: petclinic-gateway
+    managedFields:
+    - apiVersion: apps/v1
+      fieldsType: FieldsV1
+      fieldsV1:
+        f:spec:
+          f:replicas: {}
+      manager: dashboard
+      operation: Update
+      subresource: scale
+    - apiVersion: apps/v1
+      fieldsType: FieldsV1
+      fieldsV1:
+        f:metadata:
+          f:labels:
+            .: {}
+            f:app: {}
+        f:spec:
+          f:progressDeadlineSeconds: {}
+          f:revisionHistoryLimit: {}
+          f:selector: {}
+          f:strategy:
+            f:rollingUpdate:
+              .: {}
+              f:maxSurge: {}
+              f:maxUnavailable: {}
+            f:type: {}
+          f:template:
+            f:metadata:
+              f:labels:
+                .: {}
+                f:app: {}
+            f:spec:
+              f:containers:
+                k:{"name":"gateway"}:
+                  .: {}
+                  f:env:
+                    .: {}
+                    k:{"name":"feign.petServiceURL"}:
+                      .: {}
+                      f:name: {}
+                      f:value: {}
+                    k:{"name":"feign.vetServiceURL"}:
+                      .: {}
+                      f:name: {}
+                      f:value: {}
+                    k:{"name":"feign.visitServiceURL"}:
+                      .: {}
+                      f:name: {}
+                      f:value: {}
+                  f:image: {}
+                  f:imagePullPolicy: {}
+                  f:name: {}
+                  f:ports:
+                    .: {}
+                    k:{"containerPort":9966,"protocol":"TCP"}:
+                      .: {}
+                      f:containerPort: {}
+                      f:protocol: {}
+                  f:resources: {}
+                  f:terminationMessagePath: {}
+                  f:terminationMessagePolicy: {}
+              f:dnsPolicy: {}
+              f:restartPolicy: {}
+              f:schedulerName: {}
+              f:securityContext: {}
+              f:terminationGracePeriodSeconds: {}
+      manager: dashboard
+      operation: Update
+      time: "2022-01-17T07:55:47Z"
+    - apiVersion: apps/v1
+      fieldsType: FieldsV1
+      fieldsV1:
+        f:metadata:
+          f:annotations:
+            .: {}
+            f:deployment.kubernetes.io/revision: {}
+        f:status:
+          f:availableReplicas: {}
+          f:conditions:
+            .: {}
+            k:{"type":"Available"}:
+              .: {}
+              f:lastTransitionTime: {}
+              f:lastUpdateTime: {}
+              f:message: {}
+              f:reason: {}
+              f:status: {}
+              f:type: {}
+            k:{"type":"Progressing"}:
+              .: {}
+              f:lastTransitionTime: {}
+              f:lastUpdateTime: {}
+              f:message: {}
+              f:reason: {}
+              f:status: {}
+              f:type: {}
+          f:observedGeneration: {}
+          f:readyReplicas: {}
+          f:replicas: {}
+          f:updatedReplicas: {}
+      manager: kube-controller-manager
+      operation: Update
+      subresource: status
+      time: "2022-01-20T13:08:34Z"
+    name: petclinic-gateway
+    namespace: default
+    resourceVersion: "295407"
+    uid: 9d54b5e5-adf4-4b22-afdb-3c93b56ed2bf
+  spec:
+    progressDeadlineSeconds: 600
+    replicas: 2
+    revisionHistoryLimit: 10
+    selector:
+      matchLabels:
+        app: petclinic-gateway
+    strategy:
+      rollingUpdate:
+        maxSurge: 25%
+        maxUnavailable: 25%
+      type: RollingUpdate
+    template:
+      metadata:
+        creationTimestamp: null
+        labels:
+          app: petclinic-gateway
+      spec:
+        containers:
+        - env:
+          - name: feign.petServiceURL
+            value: http://petclinic-pets:8080
+          - name: feign.vetServiceURL
+            value: http://petclinic-vets:8080
+          - name: feign.visitServiceURL
+            value: http://petclinic-visits:8080
+          image: mrik974/ynov-aix-microservices-petclinic-gateway:2.4.2
+          imagePullPolicy: Always
+          name: gateway
+          ports:
+          - containerPort: 9966
+            protocol: TCP
+          resources: {}
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+        dnsPolicy: ClusterFirst
+        restartPolicy: Always
+        schedulerName: default-scheduler
+        securityContext: {}
+        terminationGracePeriodSeconds: 30
+  status:
+    availableReplicas: 2
+    conditions:
+    - lastTransitionTime: "2022-01-11T16:39:05Z"
+      lastUpdateTime: "2022-01-17T07:55:51Z"
+      message: ReplicaSet "petclinic-gateway-84d8fc58f8" has successfully progressed.
+      reason: NewReplicaSetAvailable
+      status: "True"
+      type: Progressing
+    - lastTransitionTime: "2022-01-20T13:08:34Z"
+      lastUpdateTime: "2022-01-20T13:08:34Z"
+      message: Deployment has minimum availability.
+      reason: MinimumReplicasAvailable
+      status: "True"
+      type: Available
+    observedGeneration: 5
+    readyReplicas: 2
+    replicas: 2
+    updatedReplicas: 2
+- apiVersion: apps/v1
+  kind: Deployment
+  metadata:
+    annotations:
+      deployment.kubernetes.io/revision: "1"
+    creationTimestamp: "2022-01-17T08:17:53Z"
+    generation: 1
+    managedFields:
+    - apiVersion: apps/v1
+      fieldsType: FieldsV1
+      fieldsV1:
+        f:spec:
+          f:progressDeadlineSeconds: {}
+          f:replicas: {}
+          f:revisionHistoryLimit: {}
+          f:selector: {}
+          f:strategy:
+            f:rollingUpdate:
+              .: {}
+              f:maxSurge: {}
+              f:maxUnavailable: {}
+            f:type: {}
+          f:template:
+            f:metadata:
+              f:labels:
+                .: {}
+                f:app: {}
+            f:spec:
+              f:containers:
+                k:{"name":"interface"}:
+                  .: {}
+                  f:image: {}
+                  f:imagePullPolicy: {}
+                  f:name: {}
+                  f:ports:
+                    .: {}
+                    k:{"containerPort":8080,"protocol":"TCP"}:
+                      .: {}
+                      f:containerPort: {}
+                      f:protocol: {}
+                  f:resources: {}
+                  f:terminationMessagePath: {}
+                  f:terminationMessagePolicy: {}
+              f:dnsPolicy: {}
+              f:restartPolicy: {}
+              f:schedulerName: {}
+              f:securityContext: {}
+              f:terminationGracePeriodSeconds: {}
+      manager: dashboard
+      operation: Update
+      time: "2022-01-17T08:17:53Z"
+    - apiVersion: apps/v1
+      fieldsType: FieldsV1
+      fieldsV1:
+        f:metadata:
+          f:annotations:
+            .: {}
+            f:deployment.kubernetes.io/revision: {}
+        f:status:
+          f:availableReplicas: {}
+          f:conditions:
+            .: {}
+            k:{"type":"Available"}:
+              .: {}
+              f:lastTransitionTime: {}
+              f:lastUpdateTime: {}
+              f:message: {}
+              f:reason: {}
+              f:status: {}
+              f:type: {}
+            k:{"type":"Progressing"}:
+              .: {}
+              f:lastTransitionTime: {}
+              f:lastUpdateTime: {}
+              f:message: {}
+              f:reason: {}
+              f:status: {}
+              f:type: {}
+          f:observedGeneration: {}
+          f:readyReplicas: {}
+          f:replicas: {}
+          f:updatedReplicas: {}
+      manager: kube-controller-manager
+      operation: Update
+      subresource: status
+      time: "2022-01-20T13:08:08Z"
+    name: petclinic-interface
+    namespace: default
+    resourceVersion: "295207"
+    uid: a557f599-00f0-4b94-8e13-4dda8a94d5a2
+  spec:
+    progressDeadlineSeconds: 600
+    replicas: 1
+    revisionHistoryLimit: 10
+    selector:
+      matchLabels:
+        app: petclinic-interface
+    strategy:
+      rollingUpdate:
+        maxSurge: 25%
+        maxUnavailable: 25%
+      type: RollingUpdate
+    template:
+      metadata:
+        creationTimestamp: null
+        labels:
+          app: petclinic-interface
+      spec:
+        containers:
+        - image: mrik974/ynov-aix-microservices-petclinic-interface:latest
+          imagePullPolicy: Always
+          name: interface
+          ports:
+          - containerPort: 8080
+            protocol: TCP
+          resources: {}
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+        dnsPolicy: ClusterFirst
+        restartPolicy: Always
+        schedulerName: default-scheduler
+        securityContext: {}
+        terminationGracePeriodSeconds: 30
+  status:
+    availableReplicas: 1
+    conditions:
+    - lastTransitionTime: "2022-01-17T08:17:53Z"
+      lastUpdateTime: "2022-01-17T08:17:58Z"
+      message: ReplicaSet "petclinic-interface-64b5f79986" has successfully progressed.
+      reason: NewReplicaSetAvailable
+      status: "True"
+      type: Progressing
+    - lastTransitionTime: "2022-01-20T13:08:08Z"
+      lastUpdateTime: "2022-01-20T13:08:08Z"
+      message: Deployment has minimum availability.
+      reason: MinimumReplicasAvailable
+      status: "True"
+      type: Available
+    observedGeneration: 1
+    readyReplicas: 1
+    replicas: 1
+    updatedReplicas: 1
+- apiVersion: apps/v1
+  kind: Deployment
+  metadata:
+    annotations:
+      deployment.kubernetes.io/revision: "4"
+      prometheus.io/path: /actuator/prometheus
+      prometheus.io/port: "8081"
+      prometheus.io/scrape: "true"
+    creationTimestamp: "2022-01-11T16:27:39Z"
+    generation: 6
+    labels:
+      app: petclinic-pets
+    managedFields:
+    - apiVersion: apps/v1
+      fieldsType: FieldsV1
+      fieldsV1:
+        f:metadata:
+          f:annotations:
+            f:prometheus.io/path: {}
+            f:prometheus.io/port: {}
+            f:prometheus.io/scrape: {}
+          f:labels:
+            .: {}
+            f:app: {}
+        f:spec:
+          f:progressDeadlineSeconds: {}
+          f:replicas: {}
+          f:revisionHistoryLimit: {}
+          f:selector: {}
+          f:strategy:
+            f:rollingUpdate:
+              .: {}
+              f:maxSurge: {}
+              f:maxUnavailable: {}
+            f:type: {}
+          f:template:
+            f:metadata:
+              f:labels:
+                .: {}
+                f:app: {}
+            f:spec:
+              f:containers:
+                k:{"name":"petclinic-pets"}:
+                  .: {}
+                  f:env:
+                    .: {}
+                    k:{"name":"SPRING_DATASOURCE_PASSWORD"}:
+                      .: {}
+                      f:name: {}
+                      f:valueFrom:
+                        .: {}
+                        f:secretKeyRef: {}
+                    k:{"name":"SPRING_DATASOURCE_URL"}:
+                      .: {}
+                      f:name: {}
+                      f:value: {}
+                    k:{"name":"spring.jpa.hibernate.ddl-auto"}:
+                      .: {}
+                      f:name: {}
+                      f:value: {}
+                  f:image: {}
+                  f:imagePullPolicy: {}
+                  f:name: {}
+                  f:ports:
+                    .: {}
+                    k:{"containerPort":8081,"protocol":"TCP"}:
+                      .: {}
+                      f:containerPort: {}
+                      f:protocol: {}
+                  f:resources: {}
+                  f:terminationMessagePath: {}
+                  f:terminationMessagePolicy: {}
+              f:dnsPolicy: {}
+              f:restartPolicy: {}
+              f:schedulerName: {}
+              f:securityContext: {}
+              f:terminationGracePeriodSeconds: {}
+      manager: dashboard
+      operation: Update
+      time: "2022-01-18T15:42:20Z"
+    - apiVersion: apps/v1
+      fieldsType: FieldsV1
+      fieldsV1:
+        f:metadata:
+          f:annotations:
+            .: {}
+            f:deployment.kubernetes.io/revision: {}
+        f:status:
+          f:availableReplicas: {}
+          f:conditions:
+            .: {}
+            k:{"type":"Available"}:
+              .: {}
+              f:lastTransitionTime: {}
+              f:lastUpdateTime: {}
+              f:message: {}
+              f:reason: {}
+              f:status: {}
+              f:type: {}
+            k:{"type":"Progressing"}:
+              .: {}
+              f:lastTransitionTime: {}
+              f:lastUpdateTime: {}
+              f:message: {}
+              f:reason: {}
+              f:status: {}
+              f:type: {}
+          f:observedGeneration: {}
+          f:readyReplicas: {}
+          f:replicas: {}
+          f:updatedReplicas: {}
+      manager: kube-controller-manager
+      operation: Update
+      subresource: status
+      time: "2022-01-20T13:08:10Z"
+    name: petclinic-pets
+    namespace: default
+    resourceVersion: "295227"
+    uid: c542dff9-672d-4f5c-a780-44197762132f
+  spec:
+    progressDeadlineSeconds: 600
+    replicas: 1
+    revisionHistoryLimit: 10
+    selector:
+      matchLabels:
+        app: petclinic-pets
+    strategy:
+      rollingUpdate:
+        maxSurge: 25%
+        maxUnavailable: 25%
+      type: RollingUpdate
+    template:
+      metadata:
+        creationTimestamp: null
+        labels:
+          app: petclinic-pets
+      spec:
+        containers:
+        - env:
+          - name: SPRING_DATASOURCE_URL
+            value: jdbc:mysql://mariadb/petclinic?useUnicode=true
+          - name: spring.jpa.hibernate.ddl-auto
+            value: update
+          - name: SPRING_DATASOURCE_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                key: root-password
+                name: mariadb-root-password
+          image: mrik974/spring-petclinic-microservices-pets:0.0.2-SNAPSHOT
+          imagePullPolicy: Always
+          name: petclinic-pets
+          ports:
+          - containerPort: 8081
+            protocol: TCP
+          resources: {}
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+        dnsPolicy: ClusterFirst
+        restartPolicy: Always
+        schedulerName: default-scheduler
+        securityContext: {}
+        terminationGracePeriodSeconds: 30
+  status:
+    availableReplicas: 1
+    conditions:
+    - lastTransitionTime: "2022-01-11T16:27:39Z"
+      lastUpdateTime: "2022-01-18T15:41:03Z"
+      message: ReplicaSet "petclinic-pets-5884f9dc8" has successfully progressed.
+      reason: NewReplicaSetAvailable
+      status: "True"
+      type: Progressing
+    - lastTransitionTime: "2022-01-20T13:08:10Z"
+      lastUpdateTime: "2022-01-20T13:08:10Z"
+      message: Deployment has minimum availability.
+      reason: MinimumReplicasAvailable
+      status: "True"
+      type: Available
+    observedGeneration: 6
+    readyReplicas: 1
+    replicas: 1
+    updatedReplicas: 1
+- apiVersion: apps/v1
+  kind: Deployment
+  metadata:
+    annotations:
+      deployment.kubernetes.io/revision: "2"
+    creationTimestamp: "2022-01-17T07:54:07Z"
+    generation: 2
+    labels:
+      app: petclinic-vets
+    managedFields:
+    - apiVersion: apps/v1
+      fieldsType: FieldsV1
+      fieldsV1:
+        f:metadata:
+          f:annotations:
+            .: {}
+            f:deployment.kubernetes.io/revision: {}
+        f:status:
+          f:availableReplicas: {}
+          f:conditions:
+            .: {}
+            k:{"type":"Available"}:
+              .: {}
+              f:lastTransitionTime: {}
+              f:lastUpdateTime: {}
+              f:message: {}
+              f:reason: {}
+              f:status: {}
+              f:type: {}
+            k:{"type":"Progressing"}:
+              .: {}
+              f:lastTransitionTime: {}
+              f:lastUpdateTime: {}
+              f:message: {}
+              f:reason: {}
+              f:status: {}
+              f:type: {}
+          f:observedGeneration: {}
+          f:readyReplicas: {}
+          f:replicas: {}
+          f:updatedReplicas: {}
+      manager: kube-controller-manager
+      operation: Update
+      subresource: status
+      time: "2022-01-20T13:08:10Z"
+    - apiVersion: apps/v1
+      fieldsType: FieldsV1
+      fieldsV1:
+        f:metadata:
+          f:labels:
+            .: {}
+            f:app: {}
+        f:spec:
+          f:progressDeadlineSeconds: {}
+          f:replicas: {}
+          f:revisionHistoryLimit: {}
+          f:selector: {}
+          f:strategy:
+            f:rollingUpdate:
+              .: {}
+              f:maxSurge: {}
+              f:maxUnavailable: {}
+            f:type: {}
+          f:template:
+            f:metadata:
+              f:labels:
+                .: {}
+                f:app: {}
+            f:spec:
+              f:containers:
+                k:{"name":"vets"}:
+                  .: {}
+                  f:env:
+                    .: {}
+                    k:{"name":"SPRING_DATASOURCE_PASSWORD"}:
+                      .: {}
+                      f:name: {}
+                      f:valueFrom:
+                        .: {}
+                        f:secretKeyRef: {}
+                    k:{"name":"SPRING_DATASOURCE_URL"}:
+                      .: {}
+                      f:name: {}
+                      f:value: {}
+                    k:{"name":"spring.jpa.hibernate.ddl-auto"}:
+                      .: {}
+                      f:name: {}
+                      f:value: {}
+                  f:image: {}
+                  f:imagePullPolicy: {}
+                  f:name: {}
+                  f:ports:
+                    .: {}
+                    k:{"containerPort":8080,"protocol":"TCP"}:
+                      .: {}
+                      f:containerPort: {}
+                      f:protocol: {}
+                  f:resources: {}
+                  f:terminationMessagePath: {}
+                  f:terminationMessagePolicy: {}
+              f:dnsPolicy: {}
+              f:restartPolicy: {}
+              f:schedulerName: {}
+              f:securityContext: {}
+              f:terminationGracePeriodSeconds: {}
+      manager: dashboard
+      operation: Update
+      time: "2022-01-20T13:12:55Z"
+    name: petclinic-vets
+    namespace: default
+    resourceVersion: "295944"
+    uid: 47f25c00-6d2b-4bdb-9a44-18cc98d7d857
+  spec:
+    progressDeadlineSeconds: 600
+    replicas: 1
+    revisionHistoryLimit: 10
+    selector:
+      matchLabels:
+        app: petclinic-vets
+    strategy:
+      rollingUpdate:
+        maxSurge: 25%
+        maxUnavailable: 25%
+      type: RollingUpdate
+    template:
+      metadata:
+        creationTimestamp: null
+        labels:
+          app: petclinic-vets
+      spec:
+        containers:
+        - env:
+          - name: SPRING_DATASOURCE_URL
+            value: jdbc:mysql://mariadb/petclinic?useUnicode=true
+          - name: spring.jpa.hibernate.ddl-auto
+            value: update
+          - name: SPRING_DATASOURCE_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                key: root-password
+                name: mariadb-root-password
+          image: mrik974/ynov-aix-microservices-petclinic-vets:latest
+          imagePullPolicy: Always
+          name: vets
+          ports:
+          - containerPort: 8080
+            protocol: TCP
+          resources: {}
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+        dnsPolicy: ClusterFirst
+        restartPolicy: Always
+        schedulerName: default-scheduler
+        securityContext: {}
+        terminationGracePeriodSeconds: 30
+  status:
+    availableReplicas: 1
+    conditions:
+    - lastTransitionTime: "2022-01-17T07:54:07Z"
+      lastUpdateTime: "2022-01-17T07:58:22Z"
+      message: ReplicaSet "petclinic-vets-5777dc5d55" has successfully progressed.
+      reason: NewReplicaSetAvailable
+      status: "True"
+      type: Progressing
+    - lastTransitionTime: "2022-01-20T13:08:10Z"
+      lastUpdateTime: "2022-01-20T13:08:10Z"
+      message: Deployment has minimum availability.
+      reason: MinimumReplicasAvailable
+      status: "True"
+      type: Available
+    observedGeneration: 2
+    readyReplicas: 1
+    replicas: 1
+    updatedReplicas: 1
+- apiVersion: apps/v1
+  kind: Deployment
+  metadata:
+    annotations:
+      deployment.kubernetes.io/revision: "2"
+    creationTimestamp: "2022-01-17T07:54:49Z"
+    generation: 2
+    managedFields:
+    - apiVersion: apps/v1
+      fieldsType: FieldsV1
+      fieldsV1:
+        f:spec:
+          f:progressDeadlineSeconds: {}
+          f:replicas: {}
+          f:revisionHistoryLimit: {}
+          f:selector: {}
+          f:strategy:
+            f:rollingUpdate:
+              .: {}
+              f:maxSurge: {}
+              f:maxUnavailable: {}
+            f:type: {}
+          f:template:
+            f:metadata:
+              f:labels:
+                .: {}
+                f:app: {}
+            f:spec:
+              f:containers:
+                k:{"name":"visits"}:
+                  .: {}
+                  f:env:
+                    .: {}
+                    k:{"name":"SPRING_DATASOURCE_PASSWORD"}:
+                      .: {}
+                      f:name: {}
+                      f:valueFrom:
+                        .: {}
+                        f:secretKeyRef: {}
+                    k:{"name":"SPRING_DATASOURCE_URL"}:
+                      .: {}
+                      f:name: {}
+                      f:value: {}
+                    k:{"name":"spring.jpa.hibernate.ddl-auto"}:
+                      .: {}
+                      f:name: {}
+                      f:value: {}
+                  f:image: {}
+                  f:imagePullPolicy: {}
+                  f:name: {}
+                  f:ports:
+                    .: {}
+                    k:{"containerPort":8082,"protocol":"TCP"}:
+                      .: {}
+                      f:containerPort: {}
+                      f:protocol: {}
+                  f:resources: {}
+                  f:terminationMessagePath: {}
+                  f:terminationMessagePolicy: {}
+              f:dnsPolicy: {}
+              f:restartPolicy: {}
+              f:schedulerName: {}
+              f:securityContext: {}
+              f:terminationGracePeriodSeconds: {}
+      manager: dashboard
+      operation: Update
+      time: "2022-01-17T07:58:09Z"
+    - apiVersion: apps/v1
+      fieldsType: FieldsV1
+      fieldsV1:
+        f:metadata:
+          f:annotations:
+            .: {}
+            f:deployment.kubernetes.io/revision: {}
+        f:status:
+          f:availableReplicas: {}
+          f:conditions:
+            .: {}
+            k:{"type":"Available"}:
+              .: {}
+              f:lastTransitionTime: {}
+              f:lastUpdateTime: {}
+              f:message: {}
+              f:reason: {}
+              f:status: {}
+              f:type: {}
+            k:{"type":"Progressing"}:
+              .: {}
+              f:lastTransitionTime: {}
+              f:lastUpdateTime: {}
+              f:message: {}
+              f:reason: {}
+              f:status: {}
+              f:type: {}
+          f:observedGeneration: {}
+          f:readyReplicas: {}
+          f:replicas: {}
+          f:updatedReplicas: {}
+      manager: kube-controller-manager
+      operation: Update
+      subresource: status
+      time: "2022-01-20T13:08:07Z"
+    name: petclinic-visits
+    namespace: default
+    resourceVersion: "295179"
+    uid: ea79a51f-e983-40af-9d56-b412cded94e9
+  spec:
+    progressDeadlineSeconds: 600
+    replicas: 1
+    revisionHistoryLimit: 10
+    selector:
+      matchLabels:
+        app: petclinic-visits
+    strategy:
+      rollingUpdate:
+        maxSurge: 25%
+        maxUnavailable: 25%
+      type: RollingUpdate
+    template:
+      metadata:
+        creationTimestamp: null
+        labels:
+          app: petclinic-visits
+      spec:
+        containers:
+        - env:
+          - name: SPRING_DATASOURCE_URL
+            value: jdbc:mysql://mariadb/petclinic?useUnicode=true
+          - name: spring.jpa.hibernate.ddl-auto
+            value: update
+          - name: SPRING_DATASOURCE_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                key: root-password
+                name: mariadb-root-password
+          image: mrik974/ynov-aix-microservices-petclinic-visits:latest
+          imagePullPolicy: Always
+          name: visits
+          ports:
+          - containerPort: 8082
+            protocol: TCP
+          resources: {}
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+        dnsPolicy: ClusterFirst
+        restartPolicy: Always
+        schedulerName: default-scheduler
+        securityContext: {}
+        terminationGracePeriodSeconds: 30
+  status:
+    availableReplicas: 1
+    conditions:
+    - lastTransitionTime: "2022-01-17T07:54:49Z"
+      lastUpdateTime: "2022-01-17T07:58:13Z"
+      message: ReplicaSet "petclinic-visits-75b477775c" has successfully progressed.
+      reason: NewReplicaSetAvailable
+      status: "True"
+      type: Progressing
+    - lastTransitionTime: "2022-01-20T13:08:07Z"
+      lastUpdateTime: "2022-01-20T13:08:07Z"
+      message: Deployment has minimum availability.
+      reason: MinimumReplicasAvailable
+      status: "True"
+      type: Available
+    observedGeneration: 2
+    readyReplicas: 1
+    replicas: 1
+    updatedReplicas: 1
+- apiVersion: v1
+  kind: Service
+  metadata:
+    creationTimestamp: "2022-01-10T07:15:10Z"
+    labels:
+      component: apiserver
+      provider: kubernetes
+    managedFields:
+    - apiVersion: v1
+      fieldsType: FieldsV1
+      fieldsV1:
+        f:metadata:
+          f:labels:
+            .: {}
+            f:component: {}
+            f:provider: {}
+        f:spec:
+          f:clusterIP: {}
+          f:internalTrafficPolicy: {}
+          f:ipFamilyPolicy: {}
+          f:ports:
+            .: {}
+            k:{"port":443,"protocol":"TCP"}:
+              .: {}
+              f:name: {}
+              f:port: {}
+              f:protocol: {}
+              f:targetPort: {}
+          f:sessionAffinity: {}
+          f:type: {}
+      manager: kube-apiserver
+      operation: Update
+      time: "2022-01-10T07:15:10Z"
+    name: kubernetes
+    namespace: default
+    resourceVersion: "203"
+    uid: 3e55aff0-176a-445d-afaf-77b6d76da2f8
+  spec:
+    clusterIP: 10.96.0.1
+    clusterIPs:
+    - 10.96.0.1
+    internalTrafficPolicy: Cluster
+    ipFamilies:
+    - IPv4
+    ipFamilyPolicy: SingleStack
+    ports:
+    - name: https
+      port: 443
+      protocol: TCP
+      targetPort: 6443
+    sessionAffinity: None
+    type: ClusterIP
+  status:
+    loadBalancer: {}
+- apiVersion: v1
+  kind: Service
+  metadata:
+    creationTimestamp: "2022-01-11T15:58:51Z"
+    labels:
+      app: mariadb
+    managedFields:
+    - apiVersion: v1
+      fieldsType: FieldsV1
+      fieldsV1:
+        f:metadata:
+          f:labels:
+            .: {}
+            f:app: {}
+        f:spec:
+          f:internalTrafficPolicy: {}
+          f:ports:
+            .: {}
+            k:{"port":3306,"protocol":"TCP"}:
+              .: {}
+              f:port: {}
+              f:protocol: {}
+              f:targetPort: {}
+          f:selector: {}
+          f:sessionAffinity: {}
+          f:type: {}
+      manager: kubectl-expose
+      operation: Update
+      time: "2022-01-11T15:58:51Z"
+    name: mariadb
+    namespace: default
+    resourceVersion: "71518"
+    uid: c57e3ae0-d98c-4eed-beaf-a7d2c240c6d8
+  spec:
+    clusterIP: 10.100.247.100
+    clusterIPs:
+    - 10.100.247.100
+    internalTrafficPolicy: Cluster
+    ipFamilies:
+    - IPv4
+    ipFamilyPolicy: SingleStack
+    ports:
+    - port: 3306
+      protocol: TCP
+      targetPort: 3306
+    selector:
+      app: mariadb
+    sessionAffinity: None
+    type: ClusterIP
+  status:
+    loadBalancer: {}
+- apiVersion: v1
+  kind: Service
+  metadata:
+    creationTimestamp: "2022-01-11T16:40:31Z"
+    labels:
+      app: petclinic-gateway
+    managedFields:
+    - apiVersion: v1
+      fieldsType: FieldsV1
+      fieldsV1:
+        f:metadata:
+          f:labels:
+            .: {}
+            f:app: {}
+        f:spec:
+          f:internalTrafficPolicy: {}
+          f:ports:
+            .: {}
+            k:{"port":8080,"protocol":"TCP"}:
+              .: {}
+              f:port: {}
+              f:protocol: {}
+          f:selector: {}
+          f:sessionAffinity: {}
+          f:type: {}
+      manager: kubectl-expose
+      operation: Update
+      time: "2022-01-11T16:40:31Z"
+    - apiVersion: v1
+      fieldsType: FieldsV1
+      fieldsV1:
+        f:spec:
+          f:ports:
+            k:{"port":8080,"protocol":"TCP"}:
+              f:targetPort: {}
+      manager: dashboard
+      operation: Update
+      time: "2022-01-11T16:40:43Z"
+    name: petclinic-gateway
+    namespace: default
+    resourceVersion: "75140"
+    uid: d4eddebe-329e-42ff-9e92-34527598a833
+  spec:
+    clusterIP: 10.101.70.58
+    clusterIPs:
+    - 10.101.70.58
+    internalTrafficPolicy: Cluster
+    ipFamilies:
+    - IPv4
+    ipFamilyPolicy: SingleStack
+    ports:
+    - port: 8080
+      protocol: TCP
+      targetPort: 9966
+    selector:
+      app: petclinic-gateway
+    sessionAffinity: None
+    type: ClusterIP
+  status:
+    loadBalancer: {}
+- apiVersion: v1
+  kind: Service
+  metadata:
+    creationTimestamp: "2022-01-17T08:17:53Z"
+    labels:
+      app: petclinic-interface
+    managedFields:
+    - apiVersion: v1
+      fieldsType: FieldsV1
+      fieldsV1:
+        f:metadata:
+          f:labels:
+            .: {}
+            f:app: {}
+        f:spec:
+          f:internalTrafficPolicy: {}
+          f:ipFamilies: {}
+          f:ipFamilyPolicy: {}
+          f:ports:
+            .: {}
+            k:{"port":8080,"protocol":"TCP"}:
+              .: {}
+              f:port: {}
+              f:protocol: {}
+              f:targetPort: {}
+          f:selector: {}
+          f:sessionAffinity: {}
+          f:type: {}
+      manager: dashboard
+      operation: Update
+      time: "2022-01-17T08:17:53Z"
+    name: petclinic-interface
+    namespace: default
+    resourceVersion: "240062"
+    uid: 2f9c2266-5605-4d45-99e7-5cd51456cec0
+  spec:
+    clusterIP: 10.105.143.22
+    clusterIPs:
+    - 10.105.143.22
+    internalTrafficPolicy: Cluster
+    ipFamilies:
+    - IPv4
+    ipFamilyPolicy: SingleStack
+    ports:
+    - port: 8080
+      protocol: TCP
+      targetPort: 8080
+    selector:
+      app: petclinic-interface
+    sessionAffinity: None
+    type: ClusterIP
+  status:
+    loadBalancer: {}
+- apiVersion: v1
+  kind: Service
+  metadata:
+    creationTimestamp: "2022-01-11T16:36:21Z"
+    labels:
+      app: petclinic-pets
+    managedFields:
+    - apiVersion: v1
+      fieldsType: FieldsV1
+      fieldsV1:
+        f:metadata:
+          f:labels:
+            .: {}
+            f:app: {}
+        f:spec:
+          f:internalTrafficPolicy: {}
+          f:ports: {}
+          f:selector: {}
+          f:sessionAffinity: {}
+          f:type: {}
+      manager: kubectl-expose
+      operation: Update
+      time: "2022-01-11T16:36:21Z"
+    - apiVersion: v1
+      fieldsType: FieldsV1
+      fieldsV1:
+        f:spec:
+          f:ports:
+            k:{"port":8080,"protocol":"TCP"}:
+              .: {}
+              f:port: {}
+              f:protocol: {}
+              f:targetPort: {}
+      manager: dashboard
+      operation: Update
+      time: "2022-01-11T16:37:00Z"
+    name: petclinic-pets
+    namespace: default
+    resourceVersion: "74816"
+    uid: baeda8a9-d318-4f94-952b-d2d02efc5ab5
+  spec:
+    clusterIP: 10.102.216.116
+    clusterIPs:
+    - 10.102.216.116
+    internalTrafficPolicy: Cluster
+    ipFamilies:
+    - IPv4
+    ipFamilyPolicy: SingleStack
+    ports:
+    - port: 8080
+      protocol: TCP
+      targetPort: 8081
+    selector:
+      app: petclinic-pets
+    sessionAffinity: None
+    type: ClusterIP
+  status:
+    loadBalancer: {}
+- apiVersion: v1
+  kind: Service
+  metadata:
+    creationTimestamp: "2022-01-17T07:54:07Z"
+    labels:
+      app: petclinic-vets
+    managedFields:
+    - apiVersion: v1
+      fieldsType: FieldsV1
+      fieldsV1:
+        f:metadata:
+          f:labels:
+            .: {}
+            f:app: {}
+        f:spec:
+          f:internalTrafficPolicy: {}
+          f:ports:
+            .: {}
+            k:{"port":8080,"protocol":"TCP"}:
+              .: {}
+              f:port: {}
+              f:protocol: {}
+              f:targetPort: {}
+          f:selector: {}
+          f:sessionAffinity: {}
+          f:type: {}
+      manager: dashboard
+      operation: Update
+      time: "2022-01-17T07:54:07Z"
+    name: petclinic-vets
+    namespace: default
+    resourceVersion: "237129"
+    uid: 2fddb954-9d8a-435d-b0cb-5ead23fee97c
+  spec:
+    clusterIP: 10.96.170.70
+    clusterIPs:
+    - 10.96.170.70
+    internalTrafficPolicy: Cluster
+    ipFamilies:
+    - IPv4
+    ipFamilyPolicy: SingleStack
+    ports:
+    - port: 8080
+      protocol: TCP
+      targetPort: 8080
+    selector:
+      app: petclinic-vets
+    sessionAffinity: None
+    type: ClusterIP
+  status:
+    loadBalancer: {}
+- apiVersion: v1
+  kind: Service
+  metadata:
+    creationTimestamp: "2022-01-17T07:54:49Z"
+    labels:
+      app: petclinic-visits
+    managedFields:
+    - apiVersion: v1
+      fieldsType: FieldsV1
+      fieldsV1:
+        f:metadata:
+          f:labels:
+            .: {}
+            f:app: {}
+        f:spec:
+          f:internalTrafficPolicy: {}
+          f:ports:
+            .: {}
+            k:{"port":8080,"protocol":"TCP"}:
+              .: {}
+              f:port: {}
+              f:protocol: {}
+              f:targetPort: {}
+          f:selector: {}
+          f:sessionAffinity: {}
+          f:type: {}
+      manager: dashboard
+      operation: Update
+      time: "2022-01-17T07:54:49Z"
+    name: petclinic-visits
+    namespace: default
+    resourceVersion: "237211"
+    uid: 6bcc5a23-6db6-4ac1-8c01-92c83f0f6b9b
+  spec:
+    clusterIP: 10.96.125.174
+    clusterIPs:
+    - 10.96.125.174
+    internalTrafficPolicy: Cluster
+    ipFamilies:
+    - IPv4
+    ipFamilyPolicy: SingleStack
+    ports:
+    - port: 8080
+      protocol: TCP
+      targetPort: 8082
+    selector:
+      app: petclinic-visits
+    sessionAffinity: None
+    type: ClusterIP
+  status:
+    loadBalancer: {}
+- apiVersion: networking.k8s.io/v1
+  kind: Ingress
+  metadata:
+    creationTimestamp: "2022-01-11T15:22:19Z"
+    generation: 2
+    managedFields:
+    - apiVersion: networking.k8s.io/v1
+      fieldsType: FieldsV1
+      fieldsV1:
+        f:spec:
+          f:ingressClassName: {}
+          f:rules: {}
+      manager: dashboard
+      operation: Update
+      time: "2022-01-11T15:24:35Z"
+    - apiVersion: networking.k8s.io/v1
+      fieldsType: FieldsV1
+      fieldsV1:
+        f:status:
+          f:loadBalancer:
+            f:ingress: {}
+      manager: nginx-ingress-controller
+      operation: Update
+      subresource: status
+      time: "2022-01-18T13:28:18Z"
+    name: kubernetes-bootcamp-2
+    namespace: default
+    resourceVersion: "274768"
+    uid: 324b6d99-aaaa-4e94-b1c2-88a5a0c9fba2
+  spec:
+    ingressClassName: nginx
+    rules:
+    - host: test.127.0.0.1.nip.io
+      http:
+        paths:
+        - backend:
+            service:
+              name: kubernetes-bootcamp-2
+              port:
+                number: 8080
+          path: /
+          pathType: Prefix
+  status:
+    loadBalancer:
+      ingress:
+      - hostname: localhost
+- apiVersion: networking.k8s.io/v1
+  kind: Ingress
+  metadata:
+    creationTimestamp: "2022-01-11T16:41:49Z"
+    generation: 7
+    managedFields:
+    - apiVersion: networking.k8s.io/v1
+      fieldsType: FieldsV1
+      fieldsV1:
+        f:spec:
+          f:ingressClassName: {}
+          f:rules: {}
+      manager: dashboard
+      operation: Update
+      time: "2022-01-11T16:41:49Z"
+    - apiVersion: networking.k8s.io/v1
+      fieldsType: FieldsV1
+      fieldsV1:
+        f:status:
+          f:loadBalancer:
+            f:ingress: {}
+      manager: nginx-ingress-controller
+      operation: Update
+      subresource: status
+      time: "2022-01-18T13:28:18Z"
+    name: petclinic-gateway
+    namespace: default
+    resourceVersion: "274769"
+    uid: 82465a54-0f0e-4c00-849a-87691ab898f3
+  spec:
+    ingressClassName: nginx
+    rules:
+    - host: petclinic.127.0.0.1.nip.io
+      http:
+        paths:
+        - backend:
+            service:
+              name: petclinic-interface
+              port:
+                number: 8080
+          path: /
+          pathType: Prefix
+        - backend:
+            service:
+              name: petclinic-gateway
+              port:
+                number: 8080
+          path: /petclinic/api
+          pathType: Prefix
+  status:
+    loadBalancer:
+      ingress:
+      - hostname: localhost
+- apiVersion: v1
+  data:
+    ca.crt: LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSUMvakNDQWVhZ0F3SUJBZ0lCQURBTkJna3Foa2lHOXcwQkFRc0ZBREFWTVJNd0VRWURWUVFERXdwcmRXSmwKY201bGRHVnpNQjRYRFRJeU1ERXhNREEzTVRNMU0xb1hEVE15TURFd09EQTNNVE0xTTFvd0ZURVRNQkVHQTFVRQpBeE1LYTNWaVpYSnVaWFJsY3pDQ0FTSXdEUVlKS29aSWh2Y05BUUVCQlFBRGdnRVBBRENDQVFvQ2dnRUJBTExnCkVWdWNta0lsbzIwaGJISWI3Z01hUFBCczZpeG5qOE9OSHBqcnFJTnlPcC83VXYvN3ZSZDRURittUC9GSk5CTFMKUWZVQnF5dDBEd1RJTysyUkpPZVE1Z1BEdFBxMGN1dE0vYnZKelA3TWxSd3Jzaml4UVFJYzRDVzgyTmx3VlVRVwp5NmtzZlV4YURZUEoyZXBzMzJiTXNIUFNEOFh0dUJQR0lhcnZwbG1lNE9YSFUvWXdvMy9PMEZPS1N6MGJvQ0trCk1Yb1pTY0g4ZExXNkE1aVRiajJWZ0dNRVNCNFpnWkIzY0NBRThYSkJ0S0xCL3lScmJyOElyRUFxM2lkMVpVSWoKNzFOdHVaTTJkTnBjKzJrY2JEN0lNUXdBMXB1S3ZQN05ZWFAyR242Rnc4ZXpaWmg0d0JSQlJFZTJVWFMxcS9tSwpXL0RIdjYrUFBkZDk3WVFwYUVzQ0F3RUFBYU5aTUZjd0RnWURWUjBQQVFIL0JBUURBZ0trTUE4R0ExVWRFd0VCCi93UUZNQU1CQWY4d0hRWURWUjBPQkJZRUZLRGtGSnA4cEEwKzEwMEVlM245a3EzTk1RVU9NQlVHQTFVZEVRUU8KTUF5Q0NtdDFZbVZ5Ym1WMFpYTXdEUVlKS29aSWh2Y05BUUVMQlFBRGdnRUJBQ3NlMEtjRXRkdjBmYTZCRUN2SgpkN0JXQ0pyd29OZlk1MEJ0enE2T2Z6ZTF4K1NkbzFkM3RabWxxVUVzSk5xTy9jdHpXNEQzOEk1TlZpQlI5MU5KCnA5bitMeUVna05CdUlFM0FFMjc3MHJBenJRQ0pvcUREOW5LT0ZxSGtLRUY1cWZkUnA1bHM4RnVYcHZZaWY1WGgKa2lOYnhpcXM5SXNEbWluVEZ3TFN1M2dDMEZBeElCWitkTEJCc0M2ck1NRmJtQ1JSVUJmek1iUmdxZzBIazNKUApOVUNmanhzSWVTWVh6OW04bCtKQUIyb0EwVTJYVGc2aUIyUldUMytKUi9GUExxdjM4TTB3OFRhaGdPMVlYNW9GCnlrdnFhZTJDMEFWTVN0elRLUjVPV0FMTWJVNzZHWUJjcGZ6a1Z3aGpRZ09JMnBUNjJHcHc4bUxOc1E1RVprdEYKR25ZPQotLS0tLUVORCBDRVJUSUZJQ0FURS0tLS0tCg==
+    namespace: ZGVmYXVsdA==
+    token: ZXlKaGJHY2lPaUpTVXpJMU5pSXNJbXRwWkNJNklqRndjSEZMTTBSWlQxQTRiMTkzTkZGSWJFc3RlbXROWDJkelRsVnRjVEZyT1dKZlNFRktaVFU1YWtFaWZRLmV5SnBjM01pT2lKcmRXSmxjbTVsZEdWekwzTmxjblpwWTJWaFkyTnZkVzUwSWl3aWEzVmlaWEp1WlhSbGN5NXBieTl6WlhKMmFXTmxZV05qYjNWdWRDOXVZVzFsYzNCaFkyVWlPaUprWldaaGRXeDBJaXdpYTNWaVpYSnVaWFJsY3k1cGJ5OXpaWEoyYVdObFlXTmpiM1Z1ZEM5elpXTnlaWFF1Ym1GdFpTSTZJbVJsWm1GMWJIUXRkRzlyWlc0dGREbGpibkFpTENKcmRXSmxjbTVsZEdWekxtbHZMM05sY25acFkyVmhZMk52ZFc1MEwzTmxjblpwWTJVdFlXTmpiM1Z1ZEM1dVlXMWxJam9pWkdWbVlYVnNkQ0lzSW10MVltVnlibVYwWlhNdWFXOHZjMlZ5ZG1salpXRmpZMjkxYm5RdmMyVnlkbWxqWlMxaFkyTnZkVzUwTG5WcFpDSTZJbUppTjJFMk1tSTBMV013T0RVdE5EY3hPUzA1WXpSbUxUZzJNRGxqTXpBME5tTTRaU0lzSW5OMVlpSTZJbk41YzNSbGJUcHpaWEoyYVdObFlXTmpiM1Z1ZERwa1pXWmhkV3gwT21SbFptRjFiSFFpZlEuR2x4UWtXcHIyV2l2eWVfdV9VVXBRaDJPVXo0ajJEZXJYRExaclFrQ0V2bndpcDhuYkVVUVBfV2VTMDhZYzcteW9iRXhETTVnMEFXT1h1ZzFxZXoxby1QcXFlYXdjSGJ6Q2F2U19tRnhhNklyTjctNWMzNFBkZTN0RkVtR1o5aW9LZFRDaG5nZjFyZDJRUnJvYm9SYlQtYl9WdE9sYXNSeEtlbDZEU2J6Y0dIZ3Q3RGZkUDZNSy00NTdWWVlSS3p6eGQ5MzBsU3RidXBpOW9QWGNQZ2tULWdxY0F2azNsdHRxU21wQ0tmNkVYdF9PS2IyVGJIMG5YUTNkalZETmRaUkJ0X1dYZ1g4YXhRWG9oTGdTNmhYN3ByNF8zWmRRckJVa25fMFVIQVQyVXFPTjFRTjNzRFpVZnpoWGhSeFMwVEItVE9pZTFDRUkzRDIwRG5QajBDU1J3
+  kind: Secret
+  metadata:
+    annotations:
+      kubernetes.io/service-account.name: default
+      kubernetes.io/service-account.uid: bb7a62b4-c085-4719-9c4f-8609c3046c8e
+    creationTimestamp: "2022-01-10T07:15:15Z"
+    managedFields:
+    - apiVersion: v1
+      fieldsType: FieldsV1
+      fieldsV1:
+        f:data:
+          .: {}
+          f:ca.crt: {}
+          f:namespace: {}
+          f:token: {}
+        f:metadata:
+          f:annotations:
+            .: {}
+            f:kubernetes.io/service-account.name: {}
+            f:kubernetes.io/service-account.uid: {}
+        f:type: {}
+      manager: kube-controller-manager
+      operation: Update
+      time: "2022-01-10T07:15:15Z"
+    name: default-token-t9cnp
+    namespace: default
+    resourceVersion: "385"
+    uid: 48356176-7e99-4243-a44e-b3a57d938ae6
+  type: kubernetes.io/service-account-token
+- apiVersion: v1
+  data:
+    root-password: cGFzc3dvcmQ=
+  kind: Secret
+  metadata:
+    creationTimestamp: "2022-01-11T16:11:51Z"
+    managedFields:
+    - apiVersion: v1
+      fieldsType: FieldsV1
+      fieldsV1:
+        f:data:
+          .: {}
+          f:root-password: {}
+        f:type: {}
+      manager: kubectl-create
+      operation: Update
+      time: "2022-01-11T16:11:51Z"
+    name: mariadb-root-password
+    namespace: default
+    resourceVersion: "72584"
+    uid: c73fa9d8-8647-483e-b179-671b9e570a30
+  type: Opaque
+- apiVersion: v1
+  kind: PersistentVolumeClaim
+  metadata:
+    annotations:
+      pv.kubernetes.io/bind-completed: "yes"
+      pv.kubernetes.io/bound-by-controller: "yes"
+      volume.beta.kubernetes.io/storage-provisioner: docker.io/hostpath
+    creationTimestamp: "2022-01-11T15:51:16Z"
+    finalizers:
+    - kubernetes.io/pvc-protection
+    managedFields:
+    - apiVersion: v1
+      fieldsType: FieldsV1
+      fieldsV1:
+        f:spec:
+          f:accessModes: {}
+          f:resources:
+            f:requests:
+              .: {}
+              f:storage: {}
+          f:volumeMode: {}
+      manager: dashboard
+      operation: Update
+      time: "2022-01-11T15:51:16Z"
+    - apiVersion: v1
+      fieldsType: FieldsV1
+      fieldsV1:
+        f:metadata:
+          f:annotations:
+            .: {}
+            f:pv.kubernetes.io/bind-completed: {}
+            f:pv.kubernetes.io/bound-by-controller: {}
+            f:volume.beta.kubernetes.io/storage-provisioner: {}
+        f:spec:
+          f:volumeName: {}
+      manager: kube-controller-manager
+      operation: Update
+      time: "2022-01-11T15:51:16Z"
+    - apiVersion: v1
+      fieldsType: FieldsV1
+      fieldsV1:
+        f:status:
+          f:accessModes: {}
+          f:capacity:
+            .: {}
+            f:storage: {}
+          f:phase: {}
+      manager: kube-controller-manager
+      operation: Update
+      subresource: status
+      time: "2022-01-11T15:51:16Z"
+    name: mariadb
+    namespace: default
+    resourceVersion: "70876"
+    uid: 7b9a740b-815e-4699-b849-fa24c7b40db3
+  spec:
+    accessModes:
+    - ReadWriteOnce
+    resources:
+      requests:
+        storage: 1Gi
+    storageClassName: hostpath
+    volumeMode: Filesystem
+    volumeName: pvc-7b9a740b-815e-4699-b849-fa24c7b40db3
+  status:
+    accessModes:
+    - ReadWriteOnce
+    capacity:
+      storage: 1Gi
+    phase: Bound
+kind: List
+metadata:
+  resourceVersion: ""
+  selfLink: ""
