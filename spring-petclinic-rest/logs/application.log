@@ -1,0 +1,8 @@
+25-01-2022 15:22:53.376 [main] INFO  o.s.s.petclinic.PetClinicApplication.logStarting - Starting PetClinicApplication using Java 15.0.2 on Emerics-MacBook-Pro-2.local with PID 4508 (/Users/mrik/Documents/workspace-sts-ynov-aix-2021/spring-petclinic-rest/target/classes started by mrik in /Users/mrik/Documents/workspace-sts-ynov-aix-2021/spring-petclinic-rest)
+25-01-2022 15:22:53.377 [main] INFO  o.s.s.petclinic.PetClinicApplication.logStartupProfileInfo - The following profiles are active: mysql,spring-data-jpa
+25-01-2022 15:23:00.535 [main] INFO  o.s.s.petclinic.PetClinicApplication.logStarted - Started PetClinicApplication in 7.615 seconds (JVM running for 9.241)
+25-01-2022 15:23:43.829 [http-nio-9966-exec-1] INFO  o.s.s.p.rest.PetTypeRestController.getAllPetTypes - Gateway retrieving pet types
+25-01-2022 15:26:14.297 [main] INFO  o.s.s.petclinic.PetClinicApplication.logStarting - Starting PetClinicApplication using Java 15.0.2 on Emerics-MacBook-Pro-2.local with PID 4541 (/Users/mrik/Documents/workspace-sts-ynov-aix-2021/spring-petclinic-rest/target/classes started by mrik in /Users/mrik/Documents/workspace-sts-ynov-aix-2021/spring-petclinic-rest)
+25-01-2022 15:26:14.298 [main] INFO  o.s.s.petclinic.PetClinicApplication.logStartupProfileInfo - The following profiles are active: mysql,spring-data-jpa
+25-01-2022 15:26:21.733 [main] INFO  o.s.s.petclinic.PetClinicApplication.logStarted - Started PetClinicApplication in 7.968 seconds (JVM running for 9.418)
+25-01-2022 15:26:27.044 [http-nio-9966-exec-1] INFO  o.s.s.p.rest.PetTypeRestController.getAllPetTypes - Gateway retrieving pet types

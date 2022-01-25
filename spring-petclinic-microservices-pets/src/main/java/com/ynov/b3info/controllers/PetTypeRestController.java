@@ -22,6 +22,8 @@ import java.util.Collection;
 import javax.transaction.Transactional;
 import javax.validation.Valid;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -45,10 +47,11 @@ public class PetTypeRestController {
 
 	@Autowired
 	private ClinicService clinicService;
+	private static final Logger logger = LoggerFactory.getLogger(PetTypeRestController.class);
 
 	@RequestMapping(value = "", method = RequestMethod.GET, produces = "application/json")
 	public ResponseEntity<Collection<PetType>> getAllPetTypes(){
-    	System.out.println(this.clinicService.toString());
+		logger.info("Retrieving all pet types");
 		Collection<PetType> petTypes = new ArrayList<PetType>();
 		petTypes.addAll(this.clinicService.findAllPetTypes());
 		if (petTypes.isEmpty()){
